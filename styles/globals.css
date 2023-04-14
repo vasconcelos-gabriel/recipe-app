@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.image {
+  max-width: 300%;
+  max-height: 400px;
+  object-fit: cover;
+}
