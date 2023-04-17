@@ -23,7 +23,7 @@ const RecipePage = () => {
         `https://api.spoonacular.com/recipes/search`,
         {
           params: {
-            apiKey: '0aa85c86697345fdbbb993f20fc1d07a',
+            apiKey: '4310961674b24c8f92211f61f1b4224c',
             query: searchTerm,
             language: 'pt-BR'
           }
@@ -57,7 +57,7 @@ const RecipePage = () => {
       />
       <button onClick={handleSearch}>Buscar</button>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-4">
         {recipes.map(recipe => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
