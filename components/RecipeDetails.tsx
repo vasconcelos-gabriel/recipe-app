@@ -31,7 +31,7 @@ const RecipeDetails = ({ id }: RecipeDetailsProps) => {
           `https://api.spoonacular.com/recipes/${id}/information`,
           {
             params: {
-              apiKey: '4310961674b24c8f92211f61f1b4224c',
+              apiKey: '28963d1283394038b69e0b5ea494dca6',
               includeNutrition: false,
               language: 'pt-BR',
             },
@@ -39,7 +39,7 @@ const RecipeDetails = ({ id }: RecipeDetailsProps) => {
         );
         const recipeWithImageURL = {
           ...response.data,
-          image: `https://spoonacular.com/recipeImages/${response.data.image}`,
+          image: response.data.image,
         };
         setRecipe(recipeWithImageURL);
       } catch (error) {
@@ -58,12 +58,12 @@ const RecipeDetails = ({ id }: RecipeDetailsProps) => {
 
   return (
     <div className='flex flex-col items-center p-0 bg-zinc-300 relative w-screen h-screen'>
-      <div className='bg-white w-[63.25rem] mt-4 rounded-md'>
-      <div className='bg-yellow-400 flex h-8'>
+      <div className='bg-white w-[63.25rem] mt-4 rounded-md shadow-xl'>
+      <div className='bg-blue-300 flex h-72'>
       <h1 className='text-black w-1/2 flex items-end font-bold ml-[3.75rem] mb-8 leading-[3.438rem] text-6xl'>{recipe.title}</h1>
       <img className='w-1/2' src={recipe.image} alt={recipe.title} />
       </div>
-      <h2 className='text-black mt-7 ml-4 font-bold text-4xl '>Ingredientes:</h2>
+      <h2 className='text-black mt-7 ml-4 font-bold text-3xl '>Ingredients:</h2>
     
       <ul className="mt-4 grid grid-cols-2 gap-4 list-disc list-inside items-start ml-8">
         {recipe.extendedIngredients.map((ingredient) => (
@@ -73,11 +73,12 @@ const RecipeDetails = ({ id }: RecipeDetailsProps) => {
         ))}
       </ul>
           
-      <h2 className='text-black mt-7 ml-4 font-bold text-4xl '>Modo de Preparo:</h2>
-      <div className='text-black ml-8 mt-4 mb-4' dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
+      <h2 className='text-black mt-7 ml-4 font-bold text-3xl '>How to prepare:</h2>
+      <div className='text-black ml-8 mr-8 mt-4 mb-4 text-left' dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
       </div>
     </div>
   );
 };
+
 
 export default RecipeDetails;
